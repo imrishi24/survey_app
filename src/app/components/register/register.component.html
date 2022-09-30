@@ -1,0 +1,98 @@
+<nav class="navbar navbar-dark bg-dark navbar-fixed-top">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active rg" aria-current="page" href="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link rg" href="#">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link rg" href="/signup">Register</a>
+      </li>
+    </ul>
+  </nav>
+  <div id="sect1"> 
+    <div class="container">
+        <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="border p-3">
+            <div class="row g-0">
+                <div class="col text-center p-2 mb-3 bg-light">
+                <span class="fs-3">REGISTER</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="firstname" class="form-label">USER NAME</label>
+                    <input type="text" class="form-control" id="firstname" formControlName="firstname">
+    
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" formControlName="email">
+                    <div id="email" class="form-text"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="pwd" class="form-label">Password</label>
+                    <input type="password" id="pwd" formControlName="pwd" class="form-control" >
+                    <div class="form-text"></div>
+                </div>
+                <div class="col mb-3">
+                    <label for="rpwd" class="form-label">RE-ENTER Password</label>
+                    <input type="password" id="rpwd" formControlName="rpwd" class="form-control" >
+                    <div class="form-text"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="firstname" class="form-label">FIRST NAME</label>
+                    <input type="text" class="form-control" id="firstname" formControlName="firstname">
+    
+                </div>
+                <div class="col">
+    
+                    <div class="col mb-3">
+                        <label for="lastname" class="form-label">LAST NAME</label>
+                        <input type="text" class="form-control" id="lastname" formControlName="lastname">
+            
+                    </div>
+                
+                </div>
+            </div>
+    
+                        <!--     
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <label for="mobile" class="form-label">MOBILE NUMBER</label>
+                                    <input type="text" class="form-control" id="mobile" formControlName="mobile">
+                                    <div class="form-text"></div>
+                                </div>
+                                <div class="col ps-3 mb-3">
+                                <div class="m-1">GENDER</div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" value="m" id="male" formControlName="gender">
+                                        <label class="form-check-label" for="male">MALE</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" value="f" id="female" formControlName="gender">
+                                        <label class="form-check-label" for="female">FEMALE</label>
+                                    </div>
+                                </div>
+                            </div> -->
+    
+            
+            
+            <div>
+                <div class="col-6 offset-3">
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+    
+        </form>
+    </div>
+  </div>  
+
