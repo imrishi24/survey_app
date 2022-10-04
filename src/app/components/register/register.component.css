@@ -19,3 +19,9 @@ form{
     background-image: url(./plain.jpg);
     background-size: cover;
 }
+
+.bk{
+    color: black;
+    text-align:center;
+    font-family: serif;
+}
