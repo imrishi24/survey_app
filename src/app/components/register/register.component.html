@@ -14,17 +14,16 @@
   <div id="sect1"> 
     <div class="container">
         <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="border p-3">
-            <div class="row g-0">
+            <!-- <div class="row g-0">
                 <div class="col text-center p-2 mb-3 bg-light">
                 <span class="fs-3">REGISTER</span>
                 </div>
-            </div>
+            </div> -->
             <div class="row">
                 <div class="col mb-3">
                     <label for="firstname" class="form-label">USER NAME</label>
                     <input type="text" class="form-control" id="firstname" formControlName="firstname">
-    
-                </div>
+            </div>
             </div>
             <div class="row">
                 <div class="mb-3">
