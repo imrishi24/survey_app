@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -7,7 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+repeatPass: string = 'none';
   constructor() { }
  
 
@@ -15,18 +15,55 @@ export class RegisterComponent implements OnInit {
   }
 
   registerForm = new FormGroup({
-    firstname: new FormControl(""),
-    lastname: new FormControl(""),
-    email: new FormControl(""),
-    mobile: new FormControl(""),
-    gender: new FormControl(""),
-    pwd: new FormControl(""),
+    username: new FormControl("",[Validators.required,Validators.minLength(6),Validators.pattern("[a-zA-Z].*")]),
+    firstname: new FormControl("",[Validators.required,Validators.minLength(4),Validators.pattern("[a-zA-Z].*")]),
+    lastname: new FormControl("",[Validators.required,Validators.minLength(3),Validators.pattern("[a-zA-Z].*")]),
+    email: new FormControl("",[Validators.required,Validators.email]),
+    pwd: new FormControl("",[Validators.required,Validators.minLength(6),Validators.maxLength(15)]),
     rpwd: new FormControl(""),
-
-
   });
 
   registerSubmit(){
-    console.log(this.registerForm.value);
+    if (this.Pwd.value == this.Rpwd.value){
+      console.log(this.registerForm.valid); 
+      this.repeatPass = 'none'
+    }
+    else
+    {
+      this.repeatPass = 'inline'
+    }
   }
+
+get UserName(): FormControl
+{
+  return this.registerForm.get("username") as FormControl;
+}    
+
+get FirstName(): FormControl
+{
+  return this.registerForm.get("firstname") as FormControl;
 }
+
+get LastName(): FormControl
+{
+  return this.registerForm.get("lastname") as FormControl;
+}
+
+get Email(): FormControl
+{
+  return this.registerForm.get("email") as FormControl;
+}
+
+get Pwd(): FormControl
+{
+  return this.registerForm.get("pwd") as FormControl;
+}
+
+get Rpwd(): FormControl
+{
+  return this.registerForm.get("rpwd") as FormControl;
+}
+
+}
+
+
