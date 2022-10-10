@@ -11,7 +11,8 @@
       </li>
     </ul>
   </nav> -->
-  <div id="sect1"> 
+<div id="sect1"> 
+    <p class="text-center fs-3" [ngClass]="isAccountCreated ?'text-success pb-1' : 'text-danger pb-1'">{{displayMsg}}</p>
        
     <div class="container">
        
@@ -24,7 +25,7 @@
             <div>
                 <h1 class="bk">REGISTER</h1>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col mb-3">
                     <label for="username" class="form-label">USER NAME</label>
                     <input type="text" class="form-control" id="username" formControlName="username">
@@ -37,8 +38,8 @@
                     <div class="form-text text-danger" *ngIf="UserName.errors?.['pattern'] && (UserName.touched || UserName.dirty)">
                         User Name should start with Alphabet.
                     </div>
-            </div>
-            </div>
+            </div> -->
+            <!-- </div> -->
             <div class="row">
                 <div class="col mb-3">
                     <label for="firstname" class="form-label">FIRST NAME</label>
@@ -118,7 +119,7 @@
     
         </form>
     </div>
-  </div>  
+</div>  
            
     
                         <!--     

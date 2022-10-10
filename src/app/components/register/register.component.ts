@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -7,15 +8,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-repeatPass: string = 'none';
-  constructor() { }
- 
+  repeatPass: string = 'none';
+  displayMsg: string ='';
+  isAccountCreated: boolean =false;
 
+  constructor(private authService: AuthService) { }
+  
   ngOnInit(): void {
   }
 
   registerForm = new FormGroup({
-    username: new FormControl("",[Validators.required,Validators.minLength(6),Validators.pattern("[a-zA-Z].*")]),
     firstname: new FormControl("",[Validators.required,Validators.minLength(4),Validators.pattern("[a-zA-Z].*")]),
     lastname: new FormControl("",[Validators.required,Validators.minLength(3),Validators.pattern("[a-zA-Z].*")]),
     email: new FormControl("",[Validators.required,Validators.email]),
@@ -27,17 +29,40 @@ repeatPass: string = 'none';
     if (this.Pwd.value == this.Rpwd.value){
       console.log(this.registerForm.valid); 
       this.repeatPass = 'none'
+
+      this.authService.
+      registerUser([
+      this.registerForm.value.firstname,
+      this.registerForm.value.lastname,
+      this.registerForm.value.email,
+      this.registerForm.value.pwd,
+      ])
+      .subscribe(res => {
+        // console.log(res);
+        if (res == 'Success')
+        {
+          this.displayMsg = 'Account Created Successfully!';
+          this.isAccountCreated = true;
+        }
+        else if (res == 'Already Exists')
+        {
+          this.displayMsg = 'Account Already Exists. Try another email';
+          this.isAccountCreated = false;
+        }
+        else 
+        {
+            this.displayMsg = 'Something went Wrong';
+            this.isAccountCreated = false;
+        }
+        
+      });
+
     }
     else
     {
       this.repeatPass = 'inline'
     }
   }
-
-get UserName(): FormControl
-{
-  return this.registerForm.get("username") as FormControl;
-}    
 
 get FirstName(): FormControl
 {
